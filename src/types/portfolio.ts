@@ -6,6 +6,8 @@ export type SystemPath =
   | "/achievements"
   | "/education"
   | "/certifications"
+  | "/terminal"
+  | "/recruiter"
   | "/resume"
   | "/contact";
 
@@ -17,6 +19,8 @@ export interface SystemNode {
   descriptor: string;
   description: string;
   path: SystemPath;
+  /** Conceptual group used for Command Center clustering. */
+  group?: string;
   /** Position in the desktop command-center composition, percent of stage. */
   x: number;
   y: number;

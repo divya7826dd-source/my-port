@@ -9,19 +9,40 @@ export const BOOT_CHECKS: BootCheck[] = [
 ];
 
 export const SYSTEM_NODES: SystemNode[] = [
-  { id: "profile", index: "01", label: "PROFILE", status: "ONLINE", descriptor: "ENGINEER IDENTITY", description: "Professional profile, positioning and engineering focus", path: "/profile", x: 50, y: 9 },
-  { id: "skills", index: "02", label: "SKILLS", status: "STANDBY", descriptor: "CAPABILITY MAP", description: "Backend, cloud and IoT capabilities", path: "/skills", x: 12.5, y: 40 },
-  { id: "projects", index: "03", label: "PROJECTS", status: "STANDBY", descriptor: "SYSTEM ARCHIVE", description: "Selected systems and technical work", path: "/projects", x: 87.5, y: 40 },
-  { id: "experience", index: "04", label: "EXPERIENCE", status: "STANDBY", descriptor: "MISSION LOG", description: "Professional engineering journey", path: "/experience", x: 22, y: 87 },
-  { id: "achievements", index: "05", label: "ACHIEVEMENTS", status: "STANDBY", descriptor: "RECORD VAULT", description: "Milestones and recognition", path: "/achievements", x: 78, y: 87 },
+  { id: "profile", index: "01", label: "PROFILE", status: "ONLINE", group: "ENGINEER", descriptor: "ENGINEER IDENTITY", description: "Professional profile, positioning and engineering focus", path: "/profile", x: 50, y: 9 },
+  { id: "skills", index: "02", label: "SKILLS", status: "STANDBY", group: "ENGINEER", descriptor: "CAPABILITY MAP", description: "Backend, cloud and IoT capabilities", path: "/skills", x: 12.5, y: 40 },
+  { id: "projects", index: "03", label: "PROJECTS", status: "STANDBY", group: "WORK", descriptor: "SYSTEM ARCHIVE", description: "Selected systems and technical work", path: "/projects", x: 87.5, y: 40 },
+  { id: "experience", index: "04", label: "EXPERIENCE", status: "STANDBY", group: "WORK", descriptor: "MISSION LOG", description: "Professional engineering journey", path: "/experience", x: 22, y: 87 },
+  { id: "achievements", index: "05", label: "ACHIEVEMENTS", status: "STANDBY", group: "RECOGNITION", descriptor: "RECORD VAULT", description: "Milestones and recognition", path: "/achievements", x: 78, y: 87 },
 ];
 
 export const SECONDARY_NODES: SystemNode[] = [
-  { id: "education", index: "06", label: "EDUCATION", status: "STANDBY", descriptor: "ACADEMIC RECORD", description: "Academic background", path: "/education", x: 0, y: 0 },
-  { id: "certifications", index: "07", label: "CERTIFICATIONS", status: "STANDBY", descriptor: "CREDENTIAL ARCHIVE", description: "Credential archive", path: "/certifications", x: 0, y: 0 },
-  { id: "resume", index: "08", label: "RESUME", status: "STANDBY", descriptor: "DOCUMENT LINK", description: "Full engineering resume", path: "/resume", x: 0, y: 0 },
-  { id: "contact", index: "09", label: "CONTACT", status: "ONLINE", descriptor: "DIRECT CHANNEL", description: "Direct contact channels", path: "/contact", x: 0, y: 0 },
+  { id: "education", index: "06", label: "EDUCATION", status: "STANDBY", descriptor: "ACADEMIC RECORD", description: "Academic background", path: "/education", group: "ACADEMIC", x: 0, y: 0 },
+  { id: "certifications", index: "07", label: "CERTIFICATIONS", status: "STANDBY", descriptor: "CREDENTIAL ARCHIVE", description: "Credential archive", path: "/certifications", group: "RECOGNITION", x: 0, y: 0 },
+  { id: "terminal", index: "08", label: "AI TERMINAL", status: "ONLINE", descriptor: "PORTFOLIO ASSISTANT", description: "Ask factual questions about this portfolio", path: "/terminal", group: "COMMUNICATION", x: 0, y: 0 },
+  { id: "resume", index: "09", label: "RESUME", status: "STANDBY", descriptor: "DOCUMENT LINK", description: "Full engineering resume", path: "/resume", group: "COMMUNICATION", x: 0, y: 0 },
+  { id: "contact", index: "10", label: "CONTACT", status: "ONLINE", descriptor: "DIRECT CHANNEL", description: "Direct contact channels", path: "/contact", group: "COMMUNICATION", x: 0, y: 0 },
 ];
+
+export const PRIMARY_NAV = [
+  { label: "PROFILE", path: "/profile" },
+  { label: "SKILLS", path: "/skills" },
+  { label: "PROJECTS", path: "/projects" },
+  { label: "EXPERIENCE", path: "/experience" },
+] as const;
+
+export const MOBILE_NAV = [
+  { label: "PROFILE", path: "/profile" },
+  { label: "SKILLS", path: "/skills" },
+  { label: "PROJECTS", path: "/projects" },
+  { label: "EXPERIENCE", path: "/experience" },
+  { label: "ACHIEVEMENTS", path: "/achievements" },
+  { label: "EDUCATION", path: "/education" },
+  { label: "CERTIFICATIONS", path: "/certifications" },
+  { label: "AI TERMINAL", path: "/terminal" },
+  { label: "RESUME", path: "/resume" },
+  { label: "CONTACT", path: "/contact" },
+] as const;
 
 export const NAV_ITEMS = [...SYSTEM_NODES, ...SECONDARY_NODES]
   .map(({ label, path }) => ({ label, path }));
