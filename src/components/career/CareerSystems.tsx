@@ -76,9 +76,10 @@ function ExperienceTimeline({ activeId, onSelect }: { activeId: string; onSelect
 }
 
 export function ExperienceSystem() {
-  const [activeId, setActiveId] = useState(experienceData[0].id);
+  const [activeId, setActiveId] = useState(experienceData[0]?.id ?? "");
   const activeIndex = Math.max(0, experienceData.findIndex((item) => item.id === activeId));
   const active = experienceData[activeIndex];
+  if (!active) return null;
   return <CareerFrame system="experience"><section className="py-12 sm:py-16" aria-labelledby="mission-record-title"><div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start"><div><p className="font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground">LOAD MISSION DATABASE / {experienceData.length} RECORDS</p><h2 id="mission-record-title" className="mt-3 font-display text-2xl font-bold tracking-[0.05em] sm:text-3xl">MISSION RECORDS</h2></div><div className="career-core hidden place-items-center border border-primary/30 bg-surface/50 p-5 text-center lg:grid" aria-hidden="true"><div><div className="mx-auto size-16 rounded-full border border-primary/60 p-3"><div className="size-full rounded-full border border-primary/30 core-pulse-ring" /></div><p className="mt-3 font-mono text-[0.55rem] tracking-[0.16em] text-primary">CAREER CORE</p></div></div></div><div className="mt-8"><ExperienceTimeline activeId={active.id} onSelect={setActiveId} /></div><div className="mt-8 grid gap-4 sm:grid-cols-2"><Button type="button" variant="outline" disabled={activeIndex === 0} onClick={() => setActiveId(experienceData[activeIndex - 1].id)} className="min-h-11 justify-start rounded-none border-border bg-transparent font-mono text-[0.6rem] tracking-[0.14em]"><ArrowLeft aria-hidden="true" className="size-4" /> PREVIOUS MISSION</Button><Button type="button" variant="outline" disabled={activeIndex === experienceData.length - 1} onClick={() => setActiveId(experienceData[activeIndex + 1].id)} className="min-h-11 justify-end rounded-none border-border bg-transparent font-mono text-[0.6rem] tracking-[0.14em]">NEXT MISSION <ArrowRight aria-hidden="true" className="size-4" /></Button></div><div className="mt-6 grid gap-5">{experienceData.map((item) => <MissionCard key={item.id} experience={item} active={item.id === active.id} onSelect={() => setActiveId(item.id)} />)}</div></section></CareerFrame>;
 }
 
