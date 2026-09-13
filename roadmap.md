@@ -1,0 +1,5 @@
+- [ ] Add structured Phase 4 career data.
+- [ ] Replace experience, achievements, education, and certification placeholders.
+- [ ] Integrate languages, interests, career progression, navigation, and back links.
+- [ ] Add restrained career-system visuals and reduced-motion support.
+- [ ] Verify routes, mobile layouts, keyboard interactions, and diagnostics.
